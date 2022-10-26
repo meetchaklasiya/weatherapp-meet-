@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const hbs = require('hbs')
 const add = express();
-const port = process.env.PORT || 3000 ;
+const port = process.env.PORT || 5000 ;
 
 let pathdirection = path.join(__dirname,'/public')
 
@@ -36,6 +36,6 @@ add.get('*',(req,res) => {
 
 
 add.listen(port, () => {
-    console.log('3000 port')
+    console.log('5000 port')
 })
 

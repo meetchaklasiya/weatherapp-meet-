@@ -21,7 +21,7 @@
         color: chocolate;
     }
 
-    @media (max-width:768px) {
+    @media (max-width:890px) {
     .container::before{
     content: "";
     background: url('daniel-j-schwarz-HRMi72eJ-IY-unsplash.jpg') no-repeat center center/cover;
@@ -34,7 +34,7 @@
 }
 .myinfo {
     position: absolute;
-    top: 80%;
+    top: 45%;
     left: 35%;
     text-align: center;
 }
@@ -42,9 +42,11 @@
         margin: 20px 50px;
         font-size: 0.8rem;
     }
-.navbar_right a{
-    display: none;
-}
+    .meetwheather a{
+        font-size: 135%;
+        white-space: nowrap;
+    }
+    
     }
 </style>
 <body>
@@ -57,5 +59,27 @@
             <h1>I am <span class="myself">Meet Chaklasiya </span>. I have recently studied <span class="myself" style="color: orangered;">MERN Stack</span>.</h1>
         </div>
     </div>
+
+<script>
+        document.getElementById("nav").addEventListener("click",e=>{
+   // document.getElementById("items").style.display = "block"
+    document.getElementById("nav").style.visibility = "hidden"
+    document.getElementById("mark1").style.display = "block"
+    document.getElementById("item").style.visibility = "visible"
+    document.getElementById("items").style.visibility = "visible"
+   // document.querySelector(".lorem").style.opacity = "1"
+
+        
+    })
+
+    document.getElementById("mark1").addEventListener("click", e=>{
+       // document.getElementById("items").style.display = "none"
+        document.getElementById("nav").style.visibility = "visible"
+        document.getElementById("mark1").style.display = "none"
+        document.getElementById("item").style.visibility = "hidden"
+        document.getElementById("items").style.visibility = "hidden"
+       // document.querySelector(".lorem").style.opacity = "0.7"
+    })
+</script>
 </body>
 </html>

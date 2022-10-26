@@ -36,10 +36,11 @@ a{
 .navbar_right{
     width: 30%;
     margin: 20px 0;
+    white-space: nowrap;
 }
 .navbar_right a{
     color:tomato;
-    font-size: 2rem;
+    font-size: 120%;
     font-weight: bold;
     margin: 0px 15px;
     
@@ -67,3 +68,76 @@ a{
 .navbar_right a:hover{
     color: gray;
 }
+#mark1{
+    display: none;
+}
+
+@media (max-width:890px) {
+    .crossicon{
+        z-index: 1;
+        position: absolute;
+        left: 125%;
+        
+    }
+    .items{
+        visibility: hidden;
+    }
+    .item{
+        visibility: hidden;
+    }
+    .navbar_right {
+        visibility: hidden;
+    }
+    .navbar_right a {
+        display: block;
+        font-size: 200%;
+        text-align: center;
+        margin: 10px 0;
+    }
+    .nabvaritems{
+        margin-top: 340px;
+    }
+   .navbar_right a {
+    display: block;
+   }
+    .navbaricon{
+        z-index: 1;
+        padding: 0 5px;
+        opacity: 1;
+        position: absolute;
+        left: 125%;
+    }
+    .navbaricon div{
+        width: 6vw;
+        color: chocolate;
+        background-color: chocolate;
+        margin: 6px 0;
+        z-index: 2;
+        border: 3px solid;
+    }
+    
+    #mark1{
+        font-size: 240%;
+        color: grey;
+        display: none;
+        padding: 0 5px;
+        color: chocolate;
+        
+    }
+    .navbar_right{
+    width: 140%;
+    margin: 20px 0;
+    white-space: nowrap;
+    background-color: white;
+    position: absolute;
+    top: -4%;
+    height: 141vh;
+    z-index: 1;
+}
+.navbar_right a {
+    display: block;
+    font-size: 200%;
+    text-align: center;
+}
+}
+

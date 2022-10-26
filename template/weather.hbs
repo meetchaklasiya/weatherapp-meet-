@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
         integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    {{!-- <link rel="stylesheet" href="index.css"> --}}
+    {{!-- <link rel="stylesheet" href="style.css"> --}}
     <title>Wheather app</title>
 </head>
 
@@ -162,17 +162,27 @@ a{
         color: chocolate;
         
     }
+    #mark1{
+        display: none;
+    }
 
-    @media (max-width:768px) {
+    @media (max-width:890px) {
          .meetwheather{
         margin: 20px 50px;
         font-size: 0.8rem;
+    }
+    .inputdata{
+        width: 140%;
+    }
+    .width100{
+        width: 140%;
     }
     .navbar_right a{
         display: none;
     }
     .meetwheather a{
-        font-size: 120%;
+        font-size: 135%;
+        white-space: nowrap;
     }
     input[type="text"] {
     font-size: 12px;
@@ -205,6 +215,72 @@ a{
 .fa-cloud,.fa-cloud-rain,.fa-sun{
     font-size: 150%;
     margin:0;
+}
+    .crossicon{
+        z-index: 1;
+        position: absolute;
+        left: 125%;
+        
+    }
+    .items{
+        visibility: hidden;
+    }
+    .item{
+        visibility: hidden;
+    }
+    .navbar_right {
+        visibility: hidden;
+    }
+    .navbar_right a {
+        display: block;
+        font-size: 200%;
+        text-align: center;
+        margin: 10px 0;
+    }
+    .nabvaritems{
+        margin-top: 340px;
+    }
+   .navbar_right a {
+    display: block;
+   }
+    .navbaricon{
+        z-index: 1;
+        padding: 0 5px;
+        opacity: 1;
+        position: absolute;
+        left: 125%;
+    }
+    .navbaricon div{
+        width: 6vw;
+        color: chocolate;
+        background-color: chocolate;
+        margin: 6px 0;
+        z-index: 2;
+        border: 3px solid;
+    }
+    
+    #mark1{
+        font-size: 240%;
+        color: grey;
+        display: none;
+        padding: 0 5px;
+        color: chocolate;
+        
+    }
+    .navbar_right{
+    width: 140%;
+    margin: 20px 0;
+    white-space: nowrap;
+    background-color: white;
+    position: absolute;
+    top: -4%;
+    height: 141vh;
+    z-index: 1;
+}
+.navbar_right a {
+    display: block;
+    font-size: 200%;
+    text-align: center;
 }
     }
 </style>
@@ -322,6 +398,26 @@ const getInfo = async(event) => {
 }
 
 submitbtn.addEventListener('click',getInfo)
+
+    document.getElementById("nav").addEventListener("click",e=>{
+   // document.getElementById("items").style.display = "block"
+    document.getElementById("nav").style.visibility = "hidden"
+    document.getElementById("mark1").style.display = "block"
+    document.getElementById("item").style.visibility = "visible"
+    document.getElementById("items").style.visibility = "visible"
+   // document.querySelector(".lorem").style.opacity = "1"
+
+        
+    })
+
+    document.getElementById("mark1").addEventListener("click", e=>{
+       // document.getElementById("items").style.display = "none"
+        document.getElementById("nav").style.visibility = "visible"
+        document.getElementById("mark1").style.display = "none"
+        document.getElementById("item").style.visibility = "hidden"
+        document.getElementById("items").style.visibility = "hidden"
+       // document.querySelector(".lorem").style.opacity = "0.7"
+    })
 </script>
 </body>
 </html>
