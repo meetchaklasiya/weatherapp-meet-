@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+        integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Wheather app</title>
+</head>
+<style>
+    .myinfo{
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        text-align: center;
+        }
+    .myself{
+        color: chocolate;
+    }
+
+    @media (max-width:768px) {
+    .container::before{
+    content: "";
+    background: url('daniel-j-schwarz-HRMi72eJ-IY-unsplash.jpg') no-repeat center center/cover;
+    width: 140%;
+    height: 140%;
+    position: absolute;
+    top:0;
+    z-index: -1;
+    opacity: 0.8;   
+}
+.myinfo {
+    position: absolute;
+    top: 80%;
+    left: 35%;
+    text-align: center;
+}
+.meetwheather{
+        margin: 20px 50px;
+        font-size: 0.8rem;
+    }
+.navbar_right a{
+    display: none;
+}
+    }
+</style>
+<body>
+    <div class="container">
+        
+        {{>navbar}}
+
+        <div class="myinfo">
+            <p>Hello There</p>
+            <h1>I am <span class="myself">Meet Chaklasiya </span>. I have recently studied <span class="myself" style="color: orangered;">MERN Stack</span>.</h1>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+        integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{!-- <link rel="stylesheet" href="index.css"> --}}
+    <title>Wheather app</title>
+</head>
+
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+}
+
+.flex{
+    display: flex;
+}
+a{
+    text-decoration: none;
+}
+.meetwheather{
+    width: 70%;
+    margin: 20px 160px;
+}
+.meetwheather a{
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+}
+.navbar_right{
+    width: 30%;
+    margin: 20px 0;
+}
+.navbar_right a{
+    color:black;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0px 15px;
+    
+}
+.maincontent{
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    text-align: center;
+}
+.fa-snowflake{
+    margin: 0 10px;
+    animation: rotation 2s linear infinite;
+    
+}
+
+@keyframes rotation {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+    .search{
+        background-color: black;
+        width: 34%;
+        height: 4vh;
+        text-align: center;
+        border-radius: 20px;
+        margin-top: 50px;
+        
+
+    }
+    .inputdata{
+        text-align: center;
+    }
+    
+    input[type="text"]{
+        font-size: 17px;
+        color: white;
+    }
+    #submitbtn{
+        font-size: 17px;
+        border-radius: 20px;
+        padding: 5px;
+        
+    }
+    .card{
+        margin: 50px -10px;
+        height: 32vh;
+        width: 22%;
+        border-radius: 8px;
+        background-color: black;
+        align-items: center;
+    }
+    .datetime{
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        color: white;
+        background-color: rgb(41, 40, 40);
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
+    .width100{
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .city_name{
+        font-size: 1.5rem;
+        color: gray;
+        margin: 1.5rem 1.5rem;
+    }
+    .tempdata{
+        display: flex;
+        justify-content: space-between;
+    }
+    #temp{
+        color: white;
+        font-size: 2rem;
+        margin: 2rem 2rem;
+    }
+    #temp_status{
+        color: white;
+        font-size: 2rem;
+        margin: 1.5rem 1.5rem;
+    }
+    .fa-cloud,.fa-cloud-rain,.fa-sun{
+        color: white;
+        font-size: 2.5rem;
+        margin:1rem 1.5rem;
+
+    }
+    .tempdata{
+        visibility: hidden;
+    }
+    .day{
+        visibility: hidden;
+    }
+    .time{
+        visibility: hidden;
+    }
+    #submitbtn{
+        background-color: black;
+        color: white;
+        
+    }
+    #submitbtn:hover{
+        cursor: pointer;
+        background-color: white;
+        color: black;
+    }
+    .navbar_right a:hover{
+        color: chocolate;
+        
+    }
+
+    @media (max-width:768px) {
+         .meetwheather{
+        margin: 20px 50px;
+        font-size: 0.8rem;
+    }
+    .navbar_right a{
+        display: none;
+    }
+    .meetwheather a{
+        font-size: 120%;
+    }
+    input[type="text"] {
+    font-size: 12px;
+    color: white;
+}
+    #submitbtn {
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    }
+    .card{
+        width: auto;
+        height: auto;
+    }
+    #temp{
+            font-size: 120%;
+    margin: 1rem 2rem;
+    }
+    #temp_status {
+    color: white;
+    font-size: 150%;
+    margin: 0.8rem 1.5rem;
+}
+.city_name {
+    font-size: 130%;
+    color: gray;
+    margin: 1rem 1.5rem;
+}
+
+.fa-cloud,.fa-cloud-rain,.fa-sun{
+    font-size: 150%;
+    margin:0;
+}
+    }
+</style>
+<body>
+    <div class="container">
+        {{>navbar}}
+        <div class="inputdata">
+            <input class="search" id="cityname" type="text" placeholder="Enter your City Name">
+            <input type="submit" value="search" id="submitbtn">
+        </div>
+        <div class="width100">
+        <div class="card">
+            <div class="datetime">
+                <div class="day" id="weekday">Monday</div>
+                <div class="time" id="samay">10:10</div>
+            </div>
+            <div class="city_name" id="pune">Get your Output</div>
+            <div class="tempdata" id="data_hide">
+                <p id="temp"><span>0</span> <sup>0</sup>C</p>
+                <p id="temp_status"><i class="fa fa-cloud" aria-hidden="true"></i></p>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+<script>
+const submitbtn = document.getElementById('submitbtn');
+const nameofcity = document.getElementById('cityname');
+const citypune = document.getElementById('pune');
+const temp_status = document.getElementById('temp_status')
+const temp = document.getElementById('temp')
+const datahide = document.getElementById("data_hide")
+const weekday = document.getElementById("weekday")
+const time = document.getElementById("samay")
+
+const getInfo = async(event) => {
+   // event.preventDefault();
+    let cityValue = nameofcity.value ;
+   if(cityValue == ""){
+        citypune.innerText = "Please write the City name before Search"
+        datahide.style.visibility = "hidden"
+        
+   }
+
+   else{
+        try{
+             let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&units=metric&appid=29af551a22e00af8abe2ab59d2072282` ;
+            const response = await fetch(url);
+            const data = await response.json();
+            const arraydata = [data];
+
+            citypune.innerText = `${arraydata[0].name}, ${arraydata[0].sys.country}`;
+            temp.innerHTML = `<span>${arraydata[0].main.temp}</span> <sup>0</sup>C`;
+            temp_status.innerText = arraydata[0].weather[0].main;
+
+            const tempmood = arraydata[0].weather[0].main;
+
+            if(tempmood == "Clear"){
+                temp_status.innerHTML = "<i class='fas fa-sun' style='color:#eccc68;'></i>";
+            }else if(tempmood == "Clouds") {
+                temp_status.innerHTML = "<i class='fas fa-cloud' style='color:#f1f2f6;'></i>";
+            }else if(tempmood == "Rain") {
+                temp_status.innerHTML = `<i class='fas fa-cloud-rain' style='color:#a4b0be;'></i>`;
+            }else{
+                temp_status.innerHTML = "<i class='fas fa-cloud' style='color:#f1f2f6;'></i>";
+            }
+
+            datahide.style.visibility = "visible"
+
+            const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+            const d = new Date();
+            let day = days[d.getDay()];
+            weekday.innerHTML = day;
+            weekday.style.visibility = "visible"
+
+            const b = new Date();
+            let hour = b.getHours();
+
+            const a = new Date();
+            let minutes = a.getMinutes()
+            
+            if(hour > 12) {
+                let hours = hour - 12;
+                time.style.visibility = "visible"
+                time.innerText = `${hours}:${minutes}`
+            }else{
+                time.style.visibility = "visible"
+                time.innerText = `${hour}:${minutes}`
+            }
+
+            if(minutes < 10){
+                if(hour > 12) {
+                let hours = hour - 12;
+                time.style.visibility = "visible"
+                time.innerText = `${hours}:0${minutes}`
+            }else{
+                time.style.visibility = "visible"
+                time.innerText = `${hour}:0${minutes}`
+            }
+            }
+
+            
+            
+            
+            
+        }catch{
+            citypune.innerText = "Please enter the city name properly"
+            datahide.style.visibility = "hidden"
+
+        }
+   }
+    
+}
+
+submitbtn.addEventListener('click',getInfo)
+</script>
+</body>
+</html>

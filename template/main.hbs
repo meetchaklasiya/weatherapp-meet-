@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+        integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Wheather app</title>
+</head>
+<style>
+.wea{
+    background-color: black;
+    border: 3px solid white;
+    color: white;
+    width: 15%;
+    font-size: 17px;
+    margin-top: 50px;
+}
+.wea:hover{
+    background-color: white;
+    border: 3px solid black;
+    color: black;
+    cursor: pointer;
+}
+.report{
+    color:chocolate;
+}
+.maincontent p {
+    font-size: 1.5rem;
+    color: chocolate;
+}
+
+/* media quires */
+
+@media (max-width:768px) {
+    .container::before{
+    content: "";
+    background: url('daniel-j-schwarz-HRMi72eJ-IY-unsplash.jpg') no-repeat center center/cover;
+    width: 140%;
+    height: 140%;
+    position: absolute;
+    top:0;
+    z-index: -1;
+    opacity: 0.8;   
+}
+    .navbar_right a{
+        display: none;
+    }
+    
+    .meetwheather{
+        margin: 20px 50px;
+        
+    }
+    .meetwheather a{
+        font-size: 120%;
+    }
+    .wea{
+        width: auto;
+        text-align: center;
+        font-size: 1rem;
+    }
+    .maincontent{
+        position: absolute;
+    top: 60%;
+    left: 45%;
+    text-align: center;
+    }
+}
+</style>
+<body>
+    <div class="container">
+        {{>navbar}}
+        <div class="maincontent">
+            <p>Welcome to the Weather app</p>
+            <h1>Just one click away to get the <span class="report">Weather</span> report of your <span class="report" style="color: white;">City</span></h1>
+            <a href="/weather" ><button id="/weather" class="wea">Click Here</button></a>
+
+        </div>
+    </div>
+</body>
+</html>
